@@ -1,0 +1,3 @@
+/mnt/c/Users/eviat/matam/HW3_2526B/cmake-build-debug/CMakeFiles/HW3_2526B.dir
+/mnt/c/Users/eviat/matam/HW3_2526B/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/eviat/matam/HW3_2526B/cmake-build-debug/CMakeFiles/rebuild_cache.dir
