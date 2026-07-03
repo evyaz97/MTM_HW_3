@@ -1,0 +1,123 @@
+* commit 1155a5353556f70115daee808bf55048e99c999d
+| Author: evyaz97 <evyatarz@campus.technion.ac.il>
+| Date:   Sat Jul 4 02:26:31 2026 +0300
+| 
+|     Running tests, finishing assignment
+| 
+|  SortedList.h    | 41 ++++++++++++++++------------------
+|  TaskManager.cpp | 66 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  TaskManager.h   |  6 ++++-
+|  3 files changed, 90 insertions(+), 23 deletions(-)
+| 
+* commit f06a2d370f32aadd1c582efcf4d8fcad655cb03e
+| Author: evyaz97 <evyatarz@campus.technion.ac.il>
+| Date:   Sat Jul 4 00:52:53 2026 +0300
+| 
+|     Finishing SortedList class
+| 
+|  SortedList.h | 112 +++++++++++++++++++++++++++++++++------------------------
+|  1 file changed, 65 insertions(+), 47 deletions(-)
+| 
+* commit 7cb770edb9bd5074136f89bdaf2b4d19e368b312
+| Author: evyaz97 <evyatarz@campus.technion.ac.il>
+| Date:   Fri Jul 3 21:39:41 2026 +0300
+| 
+|     Starting to implement ConstIterator class
+| 
+|  SortedList.h | 98 +++++++++++++++++++++++++++++++++++++++++++++++++++++++---
+|  1 file changed, 94 insertions(+), 4 deletions(-)
+| 
+* commit 5016818f0946ac035ce3bd748e9e4c123d770e49
+| Author: evyaz97 <evyatarz@campus.technion.ac.il>
+| Date:   Wed Jul 1 14:59:59 2026 +0300
+| 
+|     Initial homework setup
+| 
+|  .idea/.gitignore                                  |    8 +
+|  .idea/HW3_2526B.iml                               |    2 +
+|  .idea/material_theme_project_new.xml              |   12 +
+|  .idea/misc.xml                                    |    7 +
+|  .idea/modules.xml                                 |    8 +
+|  .idea/vcs.xml                                     |    6 +
+|  CMakeLists.txt                                    |   12 +
+|  Person.cpp                                        |  102 +-
+|  Person.h                                          |  158 +-
+|  README.md                                         |   12 +-
+|  SortedList.h                                      |  114 +-
+|  Task.cpp                                          |  172 +-
+|  Task.h                                            |  230 +-
+|  TaskManager.h                                     |  150 +-
+|  cmake-build-debug/.cmake/api/v1/query/cache-v2    |    0
+|  .../.cmake/api/v1/query/cmakeFiles-v1             |    0
+|  .../.cmake/api/v1/query/codemodel-v2              |    0
+|  .../.cmake/api/v1/query/toolchains-v1             |    0
+|  .../v1/reply/cache-v2-f8b9ac3d2a61ad235681.json   | 1343 +++++++
+|  .../reply/cmakeFiles-v1-ae5e2192c4a7330c6b4c.json |  914 +++++
+|  .../reply/codemodel-v2-58e9d9af65f30fa608d4.json  |   61 +
+|  .../directory-.-Debug-fd6451d79dc282e2f566.json   |   19 +
+|  .../v1/reply/index-2026-07-01T11-51-45-0061.json  |  108 +
+|  ...rget-HW3_2526B-Debug-6668acf1b39e03a6256a.json |  140 +
+|  .../reply/toolchains-v1-08ec51811a191f60aa3e.json |  110 +
+|  cmake-build-debug/CMakeCache.txt                  |  412 +++
+|  .../CMakeFiles/4.3.3/CMakeCCompiler.cmake         |   85 +
+|  .../CMakeFiles/4.3.3/CMakeCXXCompiler.cmake       |  102 +
+|  .../4.3.3/CMakeDetermineCompilerABI_C.bin         |  Bin 0 -> 16016 bytes
+|  .../4.3.3/CMakeDetermineCompilerABI_CXX.bin       |  Bin 0 -> 16048 bytes
+|  .../CMakeFiles/4.3.3/CMakeSystem.cmake            |   15 +
+|  .../4.3.3/CompilerIdC/CMakeCCompilerId.c          |  934 +++++
+|  .../CMakeFiles/4.3.3/CompilerIdC/a.out            |  Bin 0 -> 16088 bytes
+|  .../4.3.3/CompilerIdCXX/CMakeCXXCompilerId.cpp    |  949 +++++
+|  .../CMakeFiles/4.3.3/CompilerIdCXX/a.out          |  Bin 0 -> 16096 bytes
+|  .../CMakeFiles/CMakeConfigureLog.yaml             | 3686 +++++++++++++++++++
+|  .../CMakeFiles/CMakeDirectoryInformation.cmake    |   16 +
+|  .../CMakeFiles/HW3_2526B.dir/DependInfo.cmake     |   24 +
+|  .../CMakeFiles/HW3_2526B.dir/build.make           |  129 +
+|  .../CMakeFiles/HW3_2526B.dir/cmake_clean.cmake    |   13 +
+|  .../CMakeFiles/HW3_2526B.dir/compiler_depend.make |    2 +
+|  .../CMakeFiles/HW3_2526B.dir/compiler_depend.ts   |    2 +
+|  .../CMakeFiles/HW3_2526B.dir/depend.make          |    2 +
+|  .../CMakeFiles/HW3_2526B.dir/flags.make           |   10 +
+|  .../CMakeFiles/HW3_2526B.dir/link.txt             |    1 +
+|  .../CMakeFiles/HW3_2526B.dir/progress.make        |    4 +
+|  cmake-build-debug/CMakeFiles/InstallScripts.json  |    7 +
+|  cmake-build-debug/CMakeFiles/Makefile.cmake       |  150 +
+|  cmake-build-debug/CMakeFiles/Makefile2            |  122 +
+|  .../CMakeFiles/TargetDirectories.txt              |    3 +
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |   25 +
+|  .../CMakeFiles/clion-environment.txt              |    3 +
+|  cmake-build-debug/CMakeFiles/cmake.check_cache    |    1 +
+|  cmake-build-debug/CMakeFiles/progress.marks       |    1 +
+|  cmake-build-debug/HW3_2526B.cbp                   |  103 +
+|  cmake-build-debug/Makefile                        |  216 ++
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |    3 +
+|  cmake-build-debug/cmake_install.cmake             |   66 +
+|  main.cpp                                          | 1062 +++---
+|  tests/test1.expected                              |    6 +-
+|  tests/test2.expected                              |    6 +-
+|  tests/test3.expected                              |   60 +-
+|  tests/test4.expected                              |    6 +-
+|  tests/test5.expected                              |    6 +-
+|  tests/test6.expected                              |   30 +-
+|  65 files changed, 10893 insertions(+), 1057 deletions(-)
+| 
+* commit 64a99b755d6be0fffeb75022ff66192247347656
+  Author: kareemabogazala <109505740+kareemabogazala@users.noreply.github.com>
+  Date:   Fri Jun 19 08:39:15 2026 +0300
+  
+      Initial commit
+  
+   Person.cpp           |  51 +++++
+   Person.h             |  79 ++++++++
+   README.md            |   6 +
+   SortedList.h         |  57 ++++++
+   Task.cpp             |  86 ++++++++
+   Task.h               | 115 +++++++++++
+   TaskManager.h        |  75 +++++++
+   main.cpp             | 531 +++++++++++++++++++++++++++++++++++++++++++++++++
+   tests/test1.expected |   3 +
+   tests/test2.expected |   3 +
+   tests/test3.expected |  30 +++
+   tests/test4.expected |   3 +
+   tests/test5.expected |   3 +
+   tests/test6.expected |  15 ++
+   14 files changed, 1057 insertions(+)

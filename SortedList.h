@@ -47,19 +47,14 @@ namespace mtm {
                 return *this;
             }
 
-            Node* curr = this->head;
-            while(curr){
-                curr = curr->next;
-                delete this->head;
-                this->head = curr;
-            }
-            this->head = nullptr; Node* tail = nullptr;
-            for(Node* curr = other.head; curr; curr = curr->next){
-                Node* newNode = new Node{curr->data};
-                if (!this->head) this->head = newNode; else tail->next = newNode;
-                tail = newNode;
-            }
-            this->size = other.size;
+            SortedList temp(other);
+            Node* tempHead = this->head;
+            this->head = temp.head;
+            temp.head = tempHead;
+            int tempSize = this->size;
+            this->size = temp.size;
+            temp.size = tempSize;
+
             return *this;
         }
 
