@@ -18,8 +18,8 @@ namespace mtm {
 
         public:
         class ConstIterator;
-        ConstIterator begin() const;
-        ConstIterator end() const;
+        ConstIterator begin() const{ return ConstIterator(head); };
+        ConstIterator end() const{ return ConstIterator(nullptr); };
 
         SortedList() : head(nullptr), size(0){}
         ~SortedList(){
@@ -81,37 +81,58 @@ namespace mtm {
             size++;
         }
 
-        void remove(SortedList<T>::ConstIterator it){
-
+        void remove(const ConstIterator& it){
+            Node* curr = this->head;
+            Node* prev = nullptr;
+            while(curr){
+                if(!(ConstIterator(curr) != it)){
+                    // if !(!=), then it is ==, so we found the right one
+                    if(prev){
+                        prev->next = curr->next;
+                    } else{ // prev == nullptr --> one element or less
+                        this->head = curr->next;
+                    }
+                    delete curr;
+                    this->size--;
+                    return;
+                }
+                prev = curr;
+                curr = curr->next;
+            }
         }
 
-        int length(){
+        int length() const{
             return size;
         }
-        /**
-         *
-         * the class should support the following public interface:
-         * if needed, use =default / =delete
-         *
-         * constructors and destructor:
-         * 1. SortedList() - creates an empty list.
-         * 2. copy constructor
-         * 3. operator= - assignment operator
-         * 4. ~SortedList() - destructor
-         *
-         * iterator:
-         * 5. class ConstIterator;
-         * 6. begin method
-         * 7. end method
-         *
-         * functions:
-         * 8. insert - inserts a new element to the list
-         * 9. remove - removes an element from the list
-         * 10. length - returns the number of elements in the list
-         * 11. filter - returns a new list with elements that satisfy a given condition
-         * 12. apply - returns a new list with elements that were modified by an operation
-         */
 
+        template <typename Condition>
+        SortedList filter(Condition pred) const{
+            SortedList list;
+            Node dummy;
+            Node* tail = &dummy;
+            Node* curr = head;
+            while(curr){
+                if(pred(curr->data)){
+                    tail->next = new Node{curr->data};
+                    tail = tail->next;
+                    list.size++;
+                }
+                curr = curr->next;
+            }
+            list.head = dummy.next;
+            return list;
+        }
+
+        template <class Op>
+        SortedList apply(Op op) const{
+            SortedList list;
+            Node* curr = head;
+            while(curr){
+                list.insert(op(curr->data));
+                curr = curr->next;
+            }
+            return list;
+        }
     };
 
     template <class T>
@@ -121,27 +142,24 @@ namespace mtm {
 
     public:
         ConstIterator(Node* node = nullptr) : current(node){}
-        ConstIterator(const ConstIterator& it){
+        ConstIterator(const ConstIterator& it) = default;
+        ConstIterator& operator=(const ConstIterator& other) = default;
+        ~ConstIterator() = default;
 
+        const T& operator*() const{
+            return current->data;
         }
+        ConstIterator& operator++(){
+            if(current == nullptr){
+                throw std::out_of_range("End of list");
+            }
+            current = current->next;
+            return *this;
+        }
+        bool operator!=(const ConstIterator& other) const{
+            return this->current != other.current;
+        }
+
     };
-
-
-    /**
-     * the class should support the following public interface:
-     * if needed, use =default / =delete
-     *
-     * constructors and destructor:
-     * 1. a ctor(or ctors) your implementation needs
-     * 2. copy constructor
-     * 3. operator= - assignment operator
-     * 4. ~ConstIterator() - destructor
-     *
-     * operators:
-     * 5. operator* - returns the element the iterator points to
-     * 6. operator++ - advances the iterator to the next element
-     * 7. operator!= - returns true if the iterator points to a different element
-     *
-     */
 }
 
