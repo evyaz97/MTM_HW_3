@@ -7,11 +7,91 @@ namespace mtm {
 
     template <typename T>
     class SortedList {
-    public:
+    private:
+        struct Node{
+            T data;
+            Node* next = nullptr;
+        };
+
+        Node* head;
+        int size;
+
+        public:
+        class ConstIterator;
+        ConstIterator begin() const;
+        ConstIterator end() const;
+
+        SortedList() : head(nullptr), size(0){}
+        ~SortedList(){
+            while(head){
+                Node* curr = head->next;
+                delete head;
+                head = curr;
+            }
+        }
+        SortedList(const SortedList& other) : head(nullptr), size(other.size){
+            Node dummy;
+            Node* tail = &dummy;
+            for(Node* curr = other.head; curr; (curr = curr->next)){
+                tail->next = new Node{curr->data};
+                tail = tail->next;
+            }
+            head = dummy.next;
+        }
+
+        SortedList& operator=(const SortedList& other){
+            if(this == &other){
+                return *this;
+            }
+
+            Node* curr = this->head;
+            while(curr){
+                curr = curr->next;
+                delete this->head;
+                this->head = curr;
+            }
+            Node dummy;
+            Node* tail = &dummy;
+            for(Node* curr = other.head; curr; curr = curr->next){
+                tail->next = new Node{curr->data};
+                tail = tail->next;
+            }
+            this->head = dummy.next;
+            this->size = other.size;
+
+            return *this;
+        }
+
+        void insert(T element){
+            Node* newNode = new Node{element};
+            if(head == nullptr || element > head->data){
+                newNode->next = head;
+                head = newNode;
+                size++;
+                return;
+            }
+            Node* curr = head->next;
+            Node* prev = head;
+            while(curr && !(element > curr->data)) {
+                prev = curr;
+                curr = curr->next;
+            }
+            prev->next = newNode;
+            newNode->next = curr;
+            size++;
+        }
+
+        void remove(SortedList<T>::ConstIterator it){
+
+        }
+
+        int length(){
+            return size;
+        }
         /**
          *
          * the class should support the following public interface:
-         * if needed, use =defualt / =delete
+         * if needed, use =default / =delete
          *
          * constructors and destructor:
          * 1. SortedList() - creates an empty list.
@@ -36,9 +116,20 @@ namespace mtm {
 
     template <class T>
     class SortedList<T>::ConstIterator {
+    private:
+        Node* current;
+
+    public:
+        ConstIterator(Node* node = nullptr) : current(node){}
+        ConstIterator(const ConstIterator& it){
+
+        }
+    };
+
+
     /**
      * the class should support the following public interface:
-     * if needed, use =defualt / =delete
+     * if needed, use =default / =delete
      *
      * constructors and destructor:
      * 1. a ctor(or ctors) your implementation needs
@@ -52,6 +143,5 @@ namespace mtm {
      * 7. operator!= - returns true if the iterator points to a different element
      *
      */
-    };
 }
 
