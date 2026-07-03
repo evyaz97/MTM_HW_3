@@ -30,13 +30,16 @@ namespace mtm {
             }
         }
         SortedList(const SortedList& other) : head(nullptr), size(other.size){
-            Node dummy;
-            Node* tail = &dummy;
-            for(Node* curr = other.head; curr; (curr = curr->next)){
-                tail->next = new Node{curr->data};
-                tail = tail->next;
+            Node* tail = nullptr;
+            for(Node* curr = other.head; curr; curr = curr->next){
+                Node* newNode = new Node{curr->data};
+                if (!head) {
+                    head = newNode;
+                } else {
+                    tail->next = newNode;
+                }
+                tail = newNode;
             }
-            head = dummy.next;
         }
 
         SortedList& operator=(const SortedList& other){
@@ -50,15 +53,13 @@ namespace mtm {
                 delete this->head;
                 this->head = curr;
             }
-            Node dummy;
-            Node* tail = &dummy;
+            this->head = nullptr; Node* tail = nullptr;
             for(Node* curr = other.head; curr; curr = curr->next){
-                tail->next = new Node{curr->data};
-                tail = tail->next;
+                Node* newNode = new Node{curr->data};
+                if (!this->head) this->head = newNode; else tail->next = newNode;
+                tail = newNode;
             }
-            this->head = dummy.next;
             this->size = other.size;
-
             return *this;
         }
 
@@ -108,18 +109,14 @@ namespace mtm {
         template <typename Condition>
         SortedList filter(Condition pred) const{
             SortedList list;
-            Node dummy;
-            Node* tail = &dummy;
-            Node* curr = head;
-            while(curr){
-                if(pred(curr->data)){
-                    tail->next = new Node{curr->data};
-                    tail = tail->next;
-                    list.size++;
+            Node* tail = nullptr;
+            for(Node* curr = head; curr; curr = curr->next) {
+                if(pred(curr->data)) {
+                    Node* newNode = new Node{curr->data};
+                    if (!list.head) list.head = newNode; else tail->next = newNode;
+                    tail = newNode; list.size++;
                 }
-                curr = curr->next;
             }
-            list.head = dummy.next;
             return list;
         }
 
