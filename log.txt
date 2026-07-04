@@ -1,3 +1,25 @@
+* commit 37c1e6c992dba1cb9f80854a0d1aaa407749e5c7
+| Author: evyaz97 <evyatarz@campus.technion.ac.il>
+| Date:   Sat Jul 4 03:02:32 2026 +0300
+| 
+|     dry pdf
+| 
+|  dry.pdf | Bin 0 -> 77661 bytes
+|  1 file changed, 0 insertions(+), 0 deletions(-)
+| 
+* commit 03ed39a12ced9608aded9782ef96328fa5086dfc
+| Author: evyaz97 <evyatarz@campus.technion.ac.il>
+| Date:   Sat Jul 4 02:40:47 2026 +0300
+| 
+|     Changed to copy and swap in operator=
+| 
+|  .gitmodules        |   6 +++
+|  MatamGenericTester |   1 +
+|  SortedList.h       |  21 ++++-----
+|  TechnionMatam      |   1 +
+|  log.txt            | 123 +++++++++++++++++++++++++++++++++++++++++++++++++++
+|  5 files changed, 139 insertions(+), 13 deletions(-)
+| 
 * commit 1155a5353556f70115daee808bf55048e99c999d
 | Author: evyaz97 <evyatarz@campus.technion.ac.il>
 | Date:   Sat Jul 4 02:26:31 2026 +0300
